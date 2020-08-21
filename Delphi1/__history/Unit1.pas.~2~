@@ -28,7 +28,6 @@ type
     procedure btnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button10Click(Sender: TObject);
-    procedure Button11Click(Sender: TObject);
   private
   ButtonArray : Array[1..9] of TButton;
  zug, spieler, s1,s2, unentschieden : Integer;
@@ -58,20 +57,6 @@ begin
 NeuesSpiel();
 end;
 
-procedure TForm1.Button11Click(Sender: TObject);
-var
-i: integer;
-begin
- zug :=0;
-
-        spieler1.Caption:='Du : '+'0';
-        spieler2.Caption:='Gegner : '+'0';
-    for    i := low (ButtonArray) to high (ButtonArray)  do
-   ButtonArray[i].Caption := '';
-
-
-end;
-
 procedure TForm1.Button12Click(Sender: TObject);
 
 begin
@@ -89,7 +74,7 @@ begin
        button  := sender as TButton;
 
 
-      if (spieler = 0) and (button.Caption='')then
+      if spieler = 0 then
       begin
        button.Caption:='X';
        spieler:=1;
@@ -97,7 +82,7 @@ begin
       end
 
        else
-      if (spieler =1 ) and (button.Caption='' )then
+      if spieler =1 then
       begin
       button.Caption:='O';
      spieler :=0;
@@ -142,56 +127,46 @@ function TForm1.HatGewonnen():Boolean ;
 begin
 
 
-i:=1;
 
+   for I := 0 to 8 do
 
-  while i<9  do
-
-   begin
    if(ButtonArray[i].Caption<>'' ) and  (ButtonArray[i].Caption = ButtonArray[i+1].Caption) and ( ButtonArray[i].Caption = ButtonArray[i+2].Caption)then
    begin
    result := true;
      exit
-   end ;
+   end
 
-      i:=i+3;
-     end;
+    else
+    begin
+     result := false;
+
+    end;
+    i:=i+3;
 
 
 
+      {
+      for n:=0 to 3 do
 
-    n:=1;
-      while n<4  do
-
-   begin
-
-     if  (ButtonArray[n].Caption<>'') and   (ButtonArray[n].Caption = ButtonArray[n+3].Caption )and  (ButtonArray[n].Caption = ButtonArray[n+6].Caption)  then
+     if (ButtonArray[n].Caption = ButtonArray[n+3].Caption )and  (ButtonArray[n].Caption = ButtonArray[n+6].Caption) and (ButtonArray[i].Caption<>'') then
 
      begin
       result := true;
       exit
       end;
       n:=n+1;
-   end;
 
+            for  m := 0 to 2 do
 
-
-      m:=1;
-      while m<4 do
-   begin
-
-       if ( ButtonArray[m].Caption <> '') and (ButtonArray[m].Caption = ButtonArray[m+5-m].Caption )and( ButtonArray[m].Caption = ButtonArray[10-m].Caption) then
-      begin
+            if (ButtonArray[m].Caption = ButtonArray[m+4-m].Caption )and( ButtonArray[m].Caption = ButtonArray[10-m-2].Caption) and( ButtonArray[m].Caption <> '')then
+               begin
       result := true;
       exit
       end ;
-
       m :=m+2;
-   end;
 
+   }
 
-
- result := false;
 
 
 end;

@@ -194,12 +194,11 @@ object Form1: TForm1
   end
   object Button11: TButton
     Left = 200
-    Top = 343
+    Top = 352
     Width = 115
     Height = 41
     Caption = 'Neu Anfangen'
     TabOrder = 10
-    OnClick = Button11Click
   end
   object Button12: TButton
     Left = 200
