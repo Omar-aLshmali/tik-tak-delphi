@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 194
-  Top = 177
-  Width = 1305
-  Height = 675
-  Caption = 'Form1'
-  Color = clBtnFace
+  Left = 214
+  Top = 220
+  Width = 1353
+  Height = 795
+  Caption = 'Tik Tak Toe'
+  Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -14,44 +14,56 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object spieler1: TLabel
+  object play1: TLabel
     Left = 712
     Top = 208
     Width = 128
     Height = 29
     Caption = 'Spieler 1 : '
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
   end
-  object spieler2: TLabel
+  object play2: TLabel
     Left = 712
     Top = 272
     Width = 128
     Height = 29
     Caption = 'Spieler 2 : '
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
   end
-  object unent: TLabel
+  object draw_result: TLabel
     Left = 712
     Top = 320
     Width = 196
     Height = 29
     Caption = 'Unentschieden : '
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
+  end
+  object begin_play: TLabel
+    Left = 488
+    Top = 112
+    Width = 3
+    Height = 13
   end
   object btn1: TButton
     Left = 360
@@ -157,7 +169,7 @@ object Form1: TForm1
   end
   object btn8: TButton
     Left = 472
-    Top = 392
+    Top = 384
     Width = 97
     Height = 73
     Font.Charset = DEFAULT_CHARSET
@@ -183,29 +195,49 @@ object Form1: TForm1
     TabOrder = 8
     OnClick = btnClick
   end
-  object Button10: TButton
+  object New_play: TButton
     Left = 200
-    Top = 296
+    Top = 280
     Width = 115
     Height = 41
     Caption = 'Neues Spiel'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 9
+    OnClick = New_playClick
   end
-  object Button11: TButton
+  object New_begin: TButton
     Left = 200
-    Top = 352
+    Top = 343
     Width = 115
     Height = 41
     Caption = 'Neu Anfangen'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 10
+    OnClick = New_beginClick
   end
-  object Button12: TButton
+  object End_play: TButton
     Left = 200
     Top = 408
     Width = 115
     Height = 41
     Caption = 'Beenden'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 11
-    OnClick = Button12Click
+    OnClick = End_playClick
   end
 end

@@ -32,6 +32,7 @@ type
     New_begin: TButton;
     End_play: TButton;
     begin_play: TLabel;
+    CheckBox1: TCheckBox;
 
     procedure End_playClick(Sender: TObject);
     procedure btnClick(Sender: TObject);
@@ -131,7 +132,7 @@ begin
 
   end;
 
-  PcInputS(sender);
+  PcInput(sender);
 end;
 
 // Check method for profit opportunities
@@ -240,18 +241,24 @@ begin
   randomPlayer := Random(2);
   if RandomPlayer = 0 then
   begin
-    begin_play.Caption := 'Du f‰ngst an';
+    begin_play.Caption := 'Du f√§ngst an';
     player := 0;
   end
   else
   begin
-    begin_play.Caption := ' PC f‰ngt an';
+    begin_play.Caption := ' PC f√§ngt an';
     player := 1;
   end;
-  PcInput();
+  PcInputNomral();
 end;
 
-procedure TForm1.PcInput();
+procedure TForm1.PcInputHard();
+
+begin
+
+
+end;
+procedure TForm1.PcInputNomral();
 var
   i, j, inputRandom: Integer;
 begin
@@ -278,12 +285,15 @@ begin
 
 end;
 
-procedure TForm1.PcInputS(Sender: TObject);
+procedure TForm1.PcInput(Sender: TObject);
 var
   button: TButton;
 begin
   button := sender as TButton;
-  PcInput();
+  if hard_play.checked then
+
+  PcInputNomral();
+
   if IsWinn() then
 
   begin
@@ -292,9 +302,9 @@ begin
     Inc(player2);
     NewPlay();
 
-  end;
+  end
 
-  if (playerInput = 9) and (IsWinn() <> true) then
+  else if (playerInput = 9) and (IsWinn() <> true) then
   begin
     inc(draw);
     IsDraw();

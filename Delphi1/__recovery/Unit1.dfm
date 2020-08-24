@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 214
   Top = 220
-  Width = 1353
-  Height = 795
   Caption = 'Tik Tak Toe'
+  ClientHeight = 756
+  ClientWidth = 1337
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -239,5 +239,19 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 11
     OnClick = End_playClick
+  end
+  object CheckBox1: TCheckBox
+    Left = 456
+    Top = 496
+    Width = 153
+    Height = 49
+    Caption = 'Schwer spielen'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 12
   end
 end

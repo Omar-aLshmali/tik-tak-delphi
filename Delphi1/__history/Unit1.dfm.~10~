@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 214
-  Top = 220
-  Width = 1353
-  Height = 795
+  Left = 394
+  Top = 235
+  Width = 1339
+  Height = 675
   Caption = 'Tik Tak Toe'
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
@@ -20,7 +20,7 @@ object Form1: TForm1
     Width = 128
     Height = 29
     Caption = 'Spieler 1 : '
-    Color = clWindow
+    Color = clGray
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
@@ -35,7 +35,7 @@ object Form1: TForm1
     Width = 128
     Height = 29
     Caption = 'Spieler 2 : '
-    Color = clWindow
+    Color = clNavy
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
@@ -50,7 +50,7 @@ object Form1: TForm1
     Width = 196
     Height = 29
     Caption = 'Unentschieden : '
-    Color = clWindow
+    Color = clNavy
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
