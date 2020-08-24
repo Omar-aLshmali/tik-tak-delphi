@@ -4,20 +4,20 @@ File_1=SourceModule,'C:\Users\oalshmali\Unit1.pas',0,1,16,6,40,1,0
 File_2=SourceModule,'C:\Users\oalshmali\Unit2.pas',0,1,1,29,7,0,0
 
 [Modules]
-Module0=C:\Users\oalshmali\d\delphi1\Unit1.pas
+Module0=C:\Users\oalshmali\d\Delphi1\Unit1.pas
 Count=1
 EditWindowCount=1
 
-[C:\Users\oalshmali\d\delphi1\Unit1.pas]
+[C:\Users\oalshmali\d\Delphi1\Unit1.pas]
 ModuleType=SourceModule
-FormState=0
-FormOnTop=0
+FormState=3
+FormOnTop=1
 
 [C:\Windows\system32\ProjectGroup1.bpg]
 FormState=0
 FormOnTop=0
 
-[C:\Users\oalshmali\d\delphi1\Project1.dpr]
+[C:\Users\oalshmali\d\Delphi1\TikTakToe.dpr]
 FormState=0
 FormOnTop=0
 
@@ -29,28 +29,28 @@ CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
 Visible=1
-State=0
-Left=249
-Top=215
-Width=1487
-Height=771
+State=1
+Left=304
+Top=212
+Width=1302
+Height=682
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1471
-ClientHeight=732
+ClientWidth=1286
+ClientHeight=643
 LeftPanelSize=140
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=000004000000000000000000000000000000000000000000000100000000000000000C000000436F64654578706C6F726572FFFFFFFF
 RightPanelSize=0
 BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D6573736167655669657700000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D657373616765566965770000000000000000000000000000000000FFFFFFFF
 
 [View0]
-Module=C:\Users\oalshmali\d\delphi1\Unit1.pas
-CursorX=1
-CursorY=84
-TopLine=84
+Module=C:\Users\oalshmali\d\Delphi1\Unit1.pas
+CursorX=21
+CursorY=232
+TopLine=220
 LeftCol=1
 
 [Watches]
@@ -91,23 +91,6 @@ TBDockHeight=318
 LRDockWidth=446
 Dockable=1
 
-[CPUWindow]
-Create=1
-Visible=0
-State=0
-Left=40
-Top=198
-Width=1599
-Height=794
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=1583
-ClientHeight=755
-DumpPane=79
-DisassemblyPane=187
-RegisterPane=231
-FlagPane=64
-
 [AlignmentPalette]
 Create=1
 Visible=0
@@ -138,7 +121,7 @@ LRDockWidth=190
 Dockable=1
 SplitPos=85
 ArrangeBy=Name
-SelectedItem=
+SelectedItem=Caption
 ExpandedItems=
 HiddenCategories=
 
@@ -197,11 +180,11 @@ State=0
 Left=0
 Top=12
 Width=140
-Height=720
+Height=631
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=140
-ClientHeight=720
+ClientHeight=631
 TBDockHeight=305
 LRDockWidth=140
 Dockable=1
@@ -210,13 +193,13 @@ Dockable=1
 Create=1
 Visible=0
 State=0
-Left=12
-Top=0
-Width=1459
+Left=-10
+Top=-715
+Width=443
 Height=85
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1459
+ClientWidth=443
 ClientHeight=85
 TBDockHeight=85
 LRDockWidth=443

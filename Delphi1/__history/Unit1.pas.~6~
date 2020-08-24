@@ -17,24 +17,24 @@ type
     btn7: TButton;
     btn8: TButton;
     btn9: TButton;
-    play1: TLabel;
-    play2: TLabel;
-    draw_result: TLabel;
-    New_play: TButton;
-    New_begin: TButton;
-    End_play: TButton;
+    spieler1: TLabel;
+    spieler2: TLabel;
+    unent: TLabel;
+    Button10: TButton;
+    Button11: TButton;
+    Button12: TButton;
 
-    procedure End_playClick(Sender: TObject);
+    procedure Button12Click(Sender: TObject);
     procedure btnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure New_playClick(Sender: TObject);
-    procedure New_beginClick(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
   private
   ButtonArray : Array[1..9] of TButton;
- playerInput, player, player1,player2, draw: Integer;
-      function IsWinn():Boolean ;
-       procedure NewPlay();
-      procedure IsDraw();
+ zug, spieler, s1,s2, un: Integer;
+      function HatGewonnen():Boolean ;
+       procedure NeuesSpiel();
+      procedure Unentschiedn();
     { Private-Deklarationen }
   public
 
@@ -52,26 +52,26 @@ implementation
 
 {$R *.dfm}
 
-procedure TForm1.New_playClick(Sender: TObject);
+procedure TForm1.Button10Click(Sender: TObject);
 begin
 
 
-NewPlay();
+NeuesSpiel();
 end;
 
 
-// Reset everything to zero and start a new game
-procedure TForm1.New_beginClick(Sender: TObject);
+// Alles auf Null zurücksetzen und ein Neues Spiel anfangen
+procedure TForm1.Button11Click(Sender: TObject);
 var
 i: integer;
 begin
- playerInput :=0;
- player1:=0;
- player2:=0;
- draw:=0;
-      play1.Caption:='Du : '+inttostr(player1);
-      play2.Caption:='Gegner : '+inttostr(player2);
-      draw_result.Caption:='Uneuntschieden : '+inttostr(draw);
+ zug :=0;
+ s1:=0;
+ s2:=0;
+ un:=0;
+      spieler1.Caption:='Du : '+inttostr(s1);
+      spieler2.Caption:='Gegner : '+inttostr(s2);
+      unent.Caption:='Uneuntschieden : '+inttostr(un);
 
    for    i := low (ButtonArray) to high (ButtonArray)  do
    ButtonArray[i].Caption := '';
@@ -79,8 +79,8 @@ begin
 
 end;
 
- // Play end
-procedure TForm1.End_playClick(Sender: TObject);
+ // Spiel beenden
+procedure TForm1.Button12Click(Sender: TObject);
 
 begin
 Close();
@@ -98,57 +98,57 @@ begin
        button  := sender as TButton;
 
 
-      if (player = 0) and (button.Caption='')then
+      if (spieler = 0) and (button.Caption='')then
       begin
        button.Caption:='X';
-       player:=1;
-       Inc(playerInput);
+       spieler:=1;
+       Inc(zug);
       end
 
        else
-      if (player =1 ) and (button.Caption='' )then
+      if (spieler =1 ) and (button.Caption='' )then
       begin
       button.Caption:='O';
-      player :=0;
-      Inc(playerInput);
+      spieler :=0;
+      Inc(zug);
       end  ;
 
 
 
-        if IsWinn() then
+        if HatGewonnen() then
 
 
         begin
         if button.Caption='X' then
          begin
-               Showmessage('Du hast gewonnen');
+               Showmessage('Du hast Gewonnen');
 
-              Inc(player1);
-              NewPlay();
+              Inc(s1);
+              NeuesSpiel();
          end
 
            else
         begin
-          Showmessage('Gegner hat gewonnen');
-               Inc(player2);
-               NewPlay();
+          Showmessage('Gegner hast Gewonnen');
+               Inc(s2);
+               neuesSpiel();
         end;
 
         end
 
         else
-        if playerInput =9 then
+        if zug =9 then
         begin
-              inc(draw);
-              IsDraw();
+              inc(un);
+              unentschiedn();
 
         end
 
 
 end;
 
-   // Check method for profit opportunities
-function TForm1.IsWinn():Boolean ;
+   // Methode für gewinn Möglichkeiten überprüfen
+function TForm1.HatGewonnen():Boolean ;
    var
    m,n,i:Integer;
 begin
@@ -156,7 +156,7 @@ begin
 
 i:=1;
 
-   //  Vertical profit opportunities
+   //   Vertikal gewinn Möglichkeiten
   while i<9  do
 
    begin
@@ -169,7 +169,7 @@ i:=1;
       i:=i+3;
      end;
 
-     // Horizontal profit opportunities
+     // Horizontal gewinn Möglichkeiten
     n:=1;
       while n<4  do
 
@@ -184,7 +184,7 @@ i:=1;
       n:=n+1;
    end;
 
-       // Mid-profit opportunities
+       // mitte gewinn Möglichkeiten
       m:=1;
       while m<4 do
    begin
@@ -204,38 +204,37 @@ i:=1;
 
 end;
 procedure TForm1.FormCreate(Sender: TObject);
-var  i : Integer;
+var i : Integer;
 begin
+
 
    for    i := low (ButtonArray) to high (ButtonArray)  do
    ButtonArray[i] := FindComponent('btn'+inttoStr(i))as TButton
 
 
-
 end;
 
-   // got the result and repeat the round
- procedure TForm1.NewPlay();
+   // ergebnis behaten und die Runde wiederholen
+ procedure TForm1.NeuesSpiel();
    var i : Integer;
-
  begin
-  playerInput :=0;
+  zug :=0;
 
-  draw_result.Caption:='Unentschieden : '+inttostr(draw);
-   play1.Caption :='Du : '+inttostr(player1);
-  play2.Caption:='Gegner : '+inttostr(player2);
+  unent.Caption:='Unentschieden : '+inttostr(un);
+  spieler1.Caption:='Du : '+inttostr(s1);
+  spieler2.Caption:='Gegner : '+inttostr(s2);
 
     for    i := low (ButtonArray) to high (ButtonArray)  do
    ButtonArray[i].Caption := '';
 
  end;
 
- // when nobody wins
- procedure TForm1.IsDraw();
+ // wenn niemand gewinnt
+ procedure TForm1.Unentschiedn();
 
 
  begin
-     NewPlay();
+     neuesspiel();
     Showmessage('Unentschieden');
 
  end;

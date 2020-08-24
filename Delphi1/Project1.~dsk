@@ -30,27 +30,27 @@ MessageView=MessageView@EditWindow0
 Create=1
 Visible=1
 State=0
-Left=249
-Top=215
+Left=281
+Top=720
 Width=1487
-Height=771
+Height=828
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1471
-ClientHeight=732
+ClientHeight=789
 LeftPanelSize=140
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=000004000000000000000000000000000000000000000000000100000000000000000C000000436F64654578706C6F726572FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=0
+BottomPanelSize=85
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D6573736167655669657700000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=000004000000000000000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
 Module=C:\Users\oalshmali\d\delphi1\Unit1.pas
 CursorX=1
 CursorY=84
-TopLine=84
+TopLine=66
 LeftCol=1
 
 [Watches]
@@ -197,18 +197,18 @@ State=0
 Left=0
 Top=12
 Width=140
-Height=720
+Height=689
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=140
-ClientHeight=720
+ClientHeight=689
 TBDockHeight=305
 LRDockWidth=140
 Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=12
 Top=0
