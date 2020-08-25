@@ -1,9 +1,9 @@
 object Form1: TForm1
-  Left = 194
-  Top = 177
+  Left = 214
+  Top = 220
   Caption = 'Tik Tak Toe'
-  ClientHeight = 636
-  ClientWidth = 1306
+  ClientHeight = 756
+  ClientWidth = 1337
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,13 +14,13 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object spieler1: TLabel
+  object play1: TLabel
     Left = 712
     Top = 208
     Width = 128
     Height = 29
     Caption = 'Spieler 1 : '
-    Color = clGray
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
@@ -29,13 +29,13 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
   end
-  object spieler2: TLabel
+  object play2: TLabel
     Left = 712
     Top = 272
     Width = 128
     Height = 29
     Caption = 'Spieler 2 : '
-    Color = clNavy
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
@@ -44,19 +44,31 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
   end
-  object unent: TLabel
+  object draw_result: TLabel
     Left = 712
     Top = 320
     Width = 196
     Height = 29
     Caption = 'Unentschieden : '
-    Color = clNavy
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentColor = False
+    ParentFont = False
+  end
+  object begin_play: TLabel
+    Left = 442
+    Top = 145
+    Width = 15
+    Height = 57
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object btn1: TButton
@@ -189,7 +201,7 @@ object Form1: TForm1
     TabOrder = 8
     OnClick = btnClick
   end
-  object Button10: TButton
+  object New_play: TButton
     Left = 200
     Top = 280
     Width = 115
@@ -202,9 +214,9 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 9
-    OnClick = Button10Click
+    OnClick = New_playClick
   end
-  object Button11: TButton
+  object New_begin: TButton
     Left = 200
     Top = 343
     Width = 115
@@ -217,9 +229,9 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 10
-    OnClick = Button11Click
+    OnClick = New_beginClick
   end
-  object Button12: TButton
+  object End_play: TButton
     Left = 200
     Top = 408
     Width = 115
@@ -232,6 +244,20 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 11
-    OnClick = Button12Click
+    OnClick = End_playClick
+  end
+  object CheckBox1: TCheckBox
+    Left = 456
+    Top = 496
+    Width = 153
+    Height = 49
+    Caption = 'Schwer spielen'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 12
   end
 end

@@ -1,9 +1,9 @@
 object Form1: TForm1
-  Left = 394
-  Top = 235
-  Width = 1356
-  Height = 675
+  Left = 214
+  Top = 220
   Caption = 'Tik Tak Toe'
+  ClientHeight = 756
+  ClientWidth = 1337
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

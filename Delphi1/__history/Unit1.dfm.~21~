@@ -1,9 +1,9 @@
 object Form1: TForm1
-  Left = 194
-  Top = 177
+  Left = 214
+  Top = 220
   Caption = 'Tik Tak Toe'
-  ClientHeight = 636
-  ClientWidth = 1306
+  ClientHeight = 756
+  ClientWidth = 1337
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object Form1: TForm1
     Width = 128
     Height = 29
     Caption = 'Spieler 1 : '
-    Color = clGray
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
@@ -35,7 +35,7 @@ object Form1: TForm1
     Width = 128
     Height = 29
     Caption = 'Spieler 2 : '
-    Color = clNavy
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
@@ -50,13 +50,25 @@ object Form1: TForm1
     Width = 196
     Height = 29
     Caption = 'Unentschieden : '
-    Color = clNavy
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentColor = False
+    ParentFont = False
+  end
+  object begin_play: TLabel
+    Left = 442
+    Top = 145
+    Width = 15
+    Height = 57
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object btn1: TButton
@@ -233,5 +245,34 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 11
     OnClick = End_playClick
+  end
+  object CheckBox1: TCheckBox
+    Left = 456
+    Top = 496
+    Width = 153
+    Height = 49
+    Caption = 'Schwer spielen'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 12
+  end
+  object play: TButton
+    Left = 200
+    Top = 215
+    Width = 115
+    Height = 41
+    Caption = 'Start'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 13
+    OnClick = playClick
   end
 end

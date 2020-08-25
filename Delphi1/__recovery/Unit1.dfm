@@ -60,10 +60,16 @@ object Form1: TForm1
     ParentFont = False
   end
   object begin_play: TLabel
-    Left = 488
-    Top = 112
-    Width = 3
-    Height = 13
+    Left = 442
+    Top = 145
+    Width = 15
+    Height = 57
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object btn1: TButton
     Left = 360
@@ -253,5 +259,20 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 12
+  end
+  object play: TButton
+    Left = 200
+    Top = 207
+    Width = 115
+    Height = 41
+    Caption = 'Start'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 13
+    OnClick = playClick
   end
 end

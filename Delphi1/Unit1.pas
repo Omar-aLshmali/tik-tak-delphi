@@ -32,12 +32,15 @@ type
     New_begin: TButton;
     End_play: TButton;
     begin_play: TLabel;
+    CheckBox1: TCheckBox;
+    play: TButton;
 
     procedure End_playClick(Sender: TObject);
     procedure btnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure New_playClick(Sender: TObject);
     procedure New_beginClick(Sender: TObject);
+    procedure playClick(Sender: TObject);
   private
     ButtonArray: array[1..9] of TButton;
     playerInput, player, player1, player2, draw: Integer;
@@ -45,9 +48,10 @@ type
     procedure NewPlay();
     procedure IsDraw();
     procedure RandomBegin();
-    procedure PcInputNomral();
+    procedure PcInputNormal();
     procedure PcInputHard();
     procedure PcInput(Sender: TObject);
+    procedure PlayHelp(i: Integer);
     { Private-Deklarationen }
   public
 
@@ -66,6 +70,7 @@ procedure TForm1.New_playClick(Sender: TObject);
 begin
 
   NewPlay();
+  PcInput(sender);
 end;
 
 // Reset everything to zero and start a new game
@@ -83,8 +88,11 @@ begin
   draw_result.Caption := 'Uneuntschieden : ' + inttostr(draw);
 
   for i := low(ButtonArray) to high(ButtonArray) do
+  begin
     ButtonArray[i].Caption := '';
-
+  end;
+  RandomBegin();
+  PcInput(sender);
 end;
 
 // Play end
@@ -95,7 +103,26 @@ begin
   Close();
 
 end;
+  // Random Function ,who starts
+procedure TForm1.RandomBegin();
+var
+  randomPlayer: Integer;
+begin
+  randomPlayer := Random(2);
+  if RandomPlayer = 0 then
+  begin
+    begin_play.Caption := 'Du fängst an';
+    player := 1;
+  end
+  else
+  begin
+    begin_play.Caption := ' PC fängt an';
+    player := 0;
+  end;
 
+
+
+end;
 procedure TForm1.btnClick(Sender: TObject);
 var
   button: TButton;
@@ -104,10 +131,10 @@ begin
 
   button := sender as TButton;
 
-  if (player = 0) and (button.Caption = '') then
+  if (player = 1) and (button.Caption = '') then
   begin
     button.Caption := 'X';
-    player := 1;
+    player:=0;
     Inc(playerInput);
   end;
 
@@ -122,9 +149,10 @@ begin
       NewPlay();
     end
 
-  end;
 
-  if (playerInput = 9) and (IsWinn() <> true) then
+  end
+
+ else  if (playerInput = 9) and (IsWinn() <> true) then
   begin
     inc(draw);
     IsDraw();
@@ -195,16 +223,23 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 var
   i: Integer;
+
+
 begin
+
   RandomBegin();
 
+
   for i := low(ButtonArray) to high(ButtonArray) do
+  begin
     ButtonArray[i] := FindComponent('btn' + inttoStr(i)) as TButton
+  end;
+
+
 
 end;
 
 // got the result and repeat the round
-
 procedure TForm1.NewPlay();
 var
   i: Integer;
@@ -221,61 +256,151 @@ begin
     ButtonArray[i].Caption := '';
 
   RandomBegin();
+
 end;
 
 // when nobody wins
-
 procedure TForm1.IsDraw();
 
 begin
-  NewPlay();
+
   Showmessage('Unentschieden');
-
+   NewPlay();
 end;
 
-procedure TForm1.RandomBegin();
-var
-  randomPlayer: Integer;
-begin
-  randomPlayer := Random(2);
-  if RandomPlayer = 0 then
-  begin
-    begin_play.Caption := 'Du fängst an';
-    player := 0;
-  end
-  else
-  begin
-    begin_play.Caption := ' PC fängt an';
-    player := 1;
-  end;
-  PcInputNomral();
-end;
 
+
+//  Pc input difficult option
 procedure TForm1.PcInputHard();
 
 begin
 
+// Positions that increase profit
+ if (playerInput=1)and(player=0) and (ButtonArray[5].Caption='')  then
+
+   begin
+   PlayHelp(5);
+   end
+
+ else if (ButtonArray[5].Caption='O')and(player=0) and (ButtonArray[9].Caption='X') and (ButtonArray[6].Caption='')then
+ begin
+  PlayHelp(6);
+ end
+     else if (ButtonArray[5].Caption='O')and(player=0) and (ButtonArray[7].Caption='X') and (ButtonArray[4].Caption='')then
+ begin
+  PlayHelp(4);
+ end
+        // If there are two O , insert a third
+     else if (ButtonArray[1].Caption='') and (ButtonArray[2].Caption='O')and(ButtonArray[3].Caption='O') or(ButtonArray[1].Caption='')and(ButtonArray[5].Caption='O')and(ButtonArray[9].Caption='O') or(ButtonArray[1].Caption='')and(ButtonArray[7].Caption='O')and(ButtonArray[4].Caption='O') then
+   begin
+       PlayHelp(1);
+   end
+    else if (ButtonArray[6].Caption='') and (ButtonArray[3].Caption='O')and(ButtonArray[9].Caption='O') or(ButtonArray[6].Caption='')and(ButtonArray[4].Caption='O')and(ButtonArray[5].Caption='O') then
+   begin
+       PlayHelp(6);
+   end
+ else if (ButtonArray[2].Caption='') and (ButtonArray[8].Caption='O')and(ButtonArray[5].Caption='O') or(ButtonArray[2].Caption='')and(ButtonArray[1].Caption='O')and(ButtonArray[3].Caption='O') then
+   begin
+       PlayHelp(2);
+   end
+     else if (ButtonArray[3].Caption='') and (ButtonArray[7].Caption='O')and(ButtonArray[5].Caption='O') or(ButtonArray[3].Caption='')and(ButtonArray[2].Caption='O')and(ButtonArray[1].Caption='O') or(ButtonArray[3].Caption='')and(ButtonArray[9].Caption='O')and(ButtonArray[6].Caption='O') then
+   begin
+       PlayHelp(3);
+   end
+   else if (ButtonArray[8].Caption='') and (ButtonArray[5].Caption='O')and(ButtonArray[2].Caption='O') or(ButtonArray[8].Caption='')and(ButtonArray[7].Caption='O')and(ButtonArray[9].Caption='O') then
+   begin
+       PlayHelp(8);
+   end
+   else if (ButtonArray[9].Caption='') and (ButtonArray[8].Caption='O')and(ButtonArray[7].Caption='O') or(ButtonArray[9].Caption='')and(ButtonArray[3].Caption='O')and(ButtonArray[6].Caption='O') or(ButtonArray[9].Caption='')and(ButtonArray[1].Caption='O')and(ButtonArray[5].Caption='O') then
+   begin
+       PlayHelp(9);
+   end
+    else if (ButtonArray[5].Caption='') and (ButtonArray[2].Caption='O')and(ButtonArray[8].Caption='O') or(ButtonArray[5].Caption='')and(ButtonArray[1].Caption='O')and(ButtonArray[9].Caption='O')  then
+   begin
+       PlayHelp(5);
+   end
+     else if (ButtonArray[4].Caption='') and (ButtonArray[1].Caption='O')and(ButtonArray[7].Caption='O') or(ButtonArray[4].Caption='')and(ButtonArray[5].Caption='O')and(ButtonArray[6].Caption='O')  then
+   begin
+       PlayHelp(4);
+   end
+
+   // If there are two X , insert a third
+    else if (ButtonArray[2].Caption='') and (ButtonArray[8].Caption='X') and (ButtonArray[5].Caption='X') or(ButtonArray[2].Caption='')and(ButtonArray[1].Caption='X')and(ButtonArray[3].Caption='X') then
+   begin
+       PlayHelp(2);
+   end
+   else if (ButtonArray[8].Caption='') and (ButtonArray[5].Caption='X')and(ButtonArray[2].Caption='X') or(ButtonArray[8].Caption='')and(ButtonArray[7].Caption='X')and(ButtonArray[9].Caption='X') then
+   begin
+       PlayHelp(8);
+   end
+   else if (ButtonArray[9].Caption='') and (ButtonArray[8].Caption='X')and(ButtonArray[7].Caption='X') or(ButtonArray[9].Caption='')and(ButtonArray[3].Caption='X')and(ButtonArray[6].Caption='X') or(ButtonArray[9].Caption='')and(ButtonArray[1].Caption='X')and(ButtonArray[5].Caption='X') then
+   begin
+       PlayHelp(9);
+   end
+    else if (ButtonArray[1].Caption='') and (ButtonArray[2].Caption='X')and(ButtonArray[3].Caption='X') or(ButtonArray[1].Caption='')and(ButtonArray[5].Caption='X')and(ButtonArray[9].Caption='X') or(ButtonArray[1].Caption='')and(ButtonArray[7].Caption='X')and(ButtonArray[4].Caption='X') then
+   begin
+       PlayHelp(1);
+   end
+    else if (ButtonArray[3].Caption='') and (ButtonArray[7].Caption='X')and(ButtonArray[5].Caption='X') or(ButtonArray[3].Caption='')and(ButtonArray[2].Caption='X')and(ButtonArray[1].Caption='X') or(ButtonArray[3].Caption='')and(ButtonArray[9].Caption='X')and(ButtonArray[6].Caption='X') then
+   begin
+       PlayHelp(3);
+   end
+    else if (ButtonArray[5].Caption='') and (ButtonArray[2].Caption='X')and(ButtonArray[8].Caption='X') or(ButtonArray[5].Caption='')and(ButtonArray[1].Caption='X')and(ButtonArray[9].Caption='X')  or(ButtonArray[5].Caption='')and(ButtonArray[4].Caption='X')and(ButtonArray[6].Caption='X') then
+   begin
+       PlayHelp(5);
+   end
+     else if (ButtonArray[4].Caption='') and (ButtonArray[5].Caption='X')and(ButtonArray[6].Caption='X') or(ButtonArray[4].Caption='')and(ButtonArray[1].Caption='X')and(ButtonArray[7].Caption='X')  then
+   begin
+       PlayHelp(4);
+   end
+       else if (ButtonArray[6].Caption='') and (ButtonArray[3].Caption='X')and(ButtonArray[9].Caption='X') or(ButtonArray[6].Caption='')and(ButtonArray[4].Caption='X')and(ButtonArray[5].Caption='X') then
+   begin
+       PlayHelp(6);
+   end
+       else if (ButtonArray[7].Caption='') and (ButtonArray[1].Caption='X')and(ButtonArray[4].Caption='X') or(ButtonArray[7].Caption='')and(ButtonArray[8].Caption='X')and(ButtonArray[9].Caption='X') or(ButtonArray[7].Caption='')and(ButtonArray[5].Caption='X')and(ButtonArray[3].Caption='X')then
+   begin
+       PlayHelp(7);
+   end
+
+   //  important input positions
+
+    else if (player=0) and (ButtonArray[3].Caption='') then
+   begin
+       PlayHelp(3);
+   end
+      else if (player=0) and (ButtonArray[7].Caption='') then
+   begin
+       PlayHelp(7);
+   end
+
+   // Random position
+   else
+   begin
+   PcInputNormal();
+   end ;
 
 end;
-procedure TForm1.PcInputNomral();
+
+//  Pc input simple option
+procedure TForm1.PcInputNormal();
 var
   i, j, inputRandom: Integer;
 begin
-  for j := low(ButtonArray) to high(ButtonArray) do
+  for j := low(ButtonArray) to 100 do
   begin
     inputRandom := Random(10);
     for i := low(ButtonArray) to high(ButtonArray) do
     begin
-      if (inputRandom = i) and (ButtonArray[i].Caption = '') and (player = 1) then
+      if (inputRandom = i) and (ButtonArray[i].Caption = '') and (player = 0) then
       begin
         buttonArray[i].Caption := 'O';
         inc(playerinput);
-        player := player - 1;
+        inc(player);
 
       end;
 
     end;
-    if (player = 0) then
+    if (player = 1) then
     begin
       break;
     end;
@@ -284,12 +409,27 @@ begin
 
 end;
 
+ procedure TForm1.playClick(Sender: TObject);
+begin
+PcInput(sender);
+end;
+
+// Pc input options difficult and simple
 procedure TForm1.PcInput(Sender: TObject);
 var
   button: TButton;
 begin
   button := sender as TButton;
-  PcInputNomral();
+  if CheckBox1.checked then
+   begin
+     PcInputHard();
+   end
+   else
+   begin
+     PcInputNormal();
+   end;
+
+
   if IsWinn() then
 
   begin
@@ -307,5 +447,12 @@ begin
   end;
 end;
 
+
+procedure TForm1.PlayHelp(i: Integer);
+begin
+       ButtonArray[i].Caption:='O';
+       inc(player);
+       inc(playerinput);
+end;
 end.
 

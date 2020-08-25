@@ -33,14 +33,12 @@ type
     End_play: TButton;
     begin_play: TLabel;
     CheckBox1: TCheckBox;
-    play: TButton;
 
     procedure End_playClick(Sender: TObject);
     procedure btnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure New_playClick(Sender: TObject);
     procedure New_beginClick(Sender: TObject);
-    procedure playClick(Sender: TObject);
   private
     ButtonArray: array[1..9] of TButton;
     playerInput, player, player1, player2, draw: Integer;
@@ -70,7 +68,6 @@ procedure TForm1.New_playClick(Sender: TObject);
 begin
 
   NewPlay();
-  PcInput(sender);
 end;
 
 // Reset everything to zero and start a new game
@@ -88,11 +85,8 @@ begin
   draw_result.Caption := 'Uneuntschieden : ' + inttostr(draw);
 
   for i := low(ButtonArray) to high(ButtonArray) do
-  begin
     ButtonArray[i].Caption := '';
-  end;
-  RandomBegin();
-  PcInput(sender);
+
 end;
 
 // Play end
@@ -103,26 +97,7 @@ begin
   Close();
 
 end;
-  // Random Function ,who starts
-procedure TForm1.RandomBegin();
-var
-  randomPlayer: Integer;
-begin
-  randomPlayer := Random(2);
-  if RandomPlayer = 0 then
-  begin
-    begin_play.Caption := 'Du f√§ngst an';
-    player := 1;
-  end
-  else
-  begin
-    begin_play.Caption := ' PC f√§ngt an';
-    player := 0;
-  end;
 
-
-
-end;
 procedure TForm1.btnClick(Sender: TObject);
 var
   button: TButton;
@@ -134,7 +109,7 @@ begin
   if (player = 1) and (button.Caption = '') then
   begin
     button.Caption := 'X';
-    player:=0;
+   PcInputNormal();
     Inc(playerInput);
   end;
 
@@ -255,7 +230,6 @@ begin
     ButtonArray[i].Caption := '';
 
   RandomBegin();
-
 end;
 
 // when nobody wins
@@ -267,7 +241,33 @@ begin
    NewPlay();
 end;
 
+// Random Function ,who starts
+procedure TForm1.RandomBegin();
+var
+  randomPlayer: Integer;
+begin
+  randomPlayer := Random(2);
+  if RandomPlayer = 0 then
+  begin
+    begin_play.Caption := 'Du f‰ngst an';
+    player := 1;
+  end
+  else
+  begin
+    begin_play.Caption := ' PC f‰ngt an';
+    player := 0;
+  end;
 
+  if CheckBox1.checked then
+  begin
+   PcInputHard();
+  end
+  else
+  begin
+   PcInputNormal();
+  end;
+
+end;
 
 //  Pc input difficult option
 procedure TForm1.PcInputHard();
@@ -339,7 +339,7 @@ begin
    begin
        PlayHelp(3);
    end
-    else if (ButtonArray[5].Caption='') and (ButtonArray[2].Caption='X')and(ButtonArray[8].Caption='X') or(ButtonArray[5].Caption='')and(ButtonArray[1].Caption='X')and(ButtonArray[9].Caption='X')  or(ButtonArray[5].Caption='')and(ButtonArray[4].Caption='X')and(ButtonArray[6].Caption='X') then
+    else if (ButtonArray[5].Caption='') and (ButtonArray[2].Caption='X')and(ButtonArray[8].Caption='X') or(ButtonArray[5].Caption='')and(ButtonArray[1].Caption='X')and(ButtonArray[9].Caption='X')  then
    begin
        PlayHelp(5);
    end
@@ -399,12 +399,7 @@ begin
 
 end;
 
- procedure TForm1.playClick(Sender: TObject);
-begin
-PcInput(sender);
-end;
-
-// Pc input options difficult and simple
+ // Pc input options difficult and simple
 procedure TForm1.PcInput(Sender: TObject);
 var
   button: TButton;
