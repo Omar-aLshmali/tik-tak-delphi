@@ -12,7 +12,7 @@ uses
   Controls,
   Forms,
   Dialogs,
-  StdCtrls, Vcl.ExtCtrls;
+  StdCtrls;
 
 type
   TForm1 = class(TForm)
@@ -34,7 +34,6 @@ type
     begin_play: TLabel;
     CheckBox1: TCheckBox;
     play: TButton;
-    RadioGroup1: TRadioGroup;
 
     procedure End_playClick(Sender: TObject);
     procedure btnClick(Sender: TObject);
@@ -42,12 +41,8 @@ type
     procedure New_playClick(Sender: TObject);
     procedure New_beginClick(Sender: TObject);
     procedure playClick(Sender: TObject);
-    procedure RadioGroup1Click(Sender: TObject);
-
-
   private
     ButtonArray: array [1 .. 9] of TButton;
-
     playerInput, player, player1, player2, draw: Integer;
     function IsWinn(): Boolean;
     procedure NewPlay();
@@ -63,7 +58,6 @@ type
     procedure Tow_o();
     procedure Tow_X();
     procedure ImportantPcHardInput();
-
     { Private-Deklarationen }
   public
 
@@ -117,28 +111,6 @@ begin
 end;
 
 // Random Function ,who starts
-procedure TForm1.RadioGroup1Click(Sender: TObject);
-   var
-    i:integer;
-     RadioButton :  TRadioGroup;
-   const Farbe :array[0..3] of TColor=(Clwhite,Clred,Clgreen,Clyellow);
-begin
-
-       RadioButton:= sender as TRadioGroup;
-
-    for I := RadioGroup1.ItemIndex to 3 do
-
-    begin
-    RadioButton.Color := Farbe[RadioGroup1.ItemIndex];
-      form1.Color:=RadioButton.Color ;
-
-    end  ;
-
-
-
-
-end;
-
 procedure TForm1.RandomBegin();
 var
   randomPlayer: Integer;
@@ -221,9 +193,6 @@ begin
   end;
 
 end;
-
-
-
 
 // got the result and repeat the round
 procedure TForm1.NewPlay();
@@ -404,9 +373,9 @@ end;
  procedure TForm1.Tow_o();
  begin
 
-       if ((ButtonArray[1].Caption = '') and (ButtonArray[2].Caption = 'O') and (ButtonArray[3].Caption = 'O'))
-       or ((ButtonArray[1].Caption = '') and (ButtonArray[5].Caption = 'O') and (ButtonArray[9].Caption = 'O'))
-       or ((ButtonArray[1].Caption = '') and (ButtonArray[7].Caption = 'O') and (ButtonArray[4].Caption = 'O')) then
+ if ((ButtonArray[1].Caption = '') and (ButtonArray[2].Caption = 'O') and (ButtonArray[3].Caption = 'O'))
+ or ((ButtonArray[1].Caption = '') and (ButtonArray[5].Caption = 'O') and (ButtonArray[9].Caption = 'O'))
+ or((ButtonArray[1].Caption = '') and (ButtonArray[7].Caption = 'O') and (ButtonArray[4].Caption = 'O')) then
   begin
     PlayHelp(1);
   end
@@ -452,53 +421,66 @@ end;
  procedure TForm1.Tow_X();
  begin
 
-       if ((ButtonArray[2].Caption = '') and (ButtonArray[8].Caption = 'X') and (ButtonArray[5].Caption = 'X'))
-       or ((ButtonArray[2].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[3].Caption = 'X')) then
+     if ((ButtonArray[2].Caption = '') and (ButtonArray[8].Caption = 'X') and (ButtonArray[5].Caption = 'X'))
+     or ((ButtonArray[2].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[3].Caption = 'X')) then
   begin
     PlayHelp(2);
   end
-  else if ((ButtonArray[8].Caption = '') and (ButtonArray[5].Caption = 'X') and (ButtonArray[2].Caption = 'X'))
-       or ((ButtonArray[8].Caption = '') and (ButtonArray[7].Caption = 'X') and (ButtonArray[9].Caption = 'X')) then
+  else if (ButtonArray[8].Caption = '') and (ButtonArray[5].Caption = 'X') and
+    (ButtonArray[2].Caption = 'X') or (ButtonArray[8].Caption = '') and
+    (ButtonArray[7].Caption = 'X') and (ButtonArray[9].Caption = 'X') then
   begin
     PlayHelp(8);
   end
-  else if ((ButtonArray[9].Caption = '') and (ButtonArray[8].Caption = 'X') and (ButtonArray[7].Caption = 'X'))
-       or ((ButtonArray[9].Caption = '') and (ButtonArray[3].Caption = 'X') and (ButtonArray[6].Caption = 'X'))
-       or ((ButtonArray[9].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[5].Caption = 'X')) then
+  else if (ButtonArray[9].Caption = '') and (ButtonArray[8].Caption = 'X') and
+    (ButtonArray[7].Caption = 'X') or (ButtonArray[9].Caption = '') and
+    (ButtonArray[3].Caption = 'X') and (ButtonArray[6].Caption = 'X') or
+    (ButtonArray[9].Caption = '') and (ButtonArray[1].Caption = 'X') and
+    (ButtonArray[5].Caption = 'X') then
   begin
     PlayHelp(9);
   end
-  else if ((ButtonArray[1].Caption = '') and (ButtonArray[2].Caption = 'X') and (ButtonArray[3].Caption = 'X'))
-       or ((ButtonArray[1].Caption = '') and (ButtonArray[5].Caption = 'X') and (ButtonArray[9].Caption = 'X'))
-       or ((ButtonArray[1].Caption = '') and (ButtonArray[7].Caption = 'X') and (ButtonArray[4].Caption = 'X')) then
+  else if (ButtonArray[1].Caption = '') and (ButtonArray[2].Caption = 'X') and
+    (ButtonArray[3].Caption = 'X') or (ButtonArray[1].Caption = '') and
+    (ButtonArray[5].Caption = 'X') and (ButtonArray[9].Caption = 'X') or
+    (ButtonArray[1].Caption = '') and (ButtonArray[7].Caption = 'X') and
+    (ButtonArray[4].Caption = 'X') then
   begin
     PlayHelp(1);
   end
-  else if ((ButtonArray[3].Caption = '') and (ButtonArray[7].Caption = 'X') and (ButtonArray[5].Caption = 'X'))
-       or ((ButtonArray[3].Caption = '') and (ButtonArray[2].Caption = 'X') and (ButtonArray[1].Caption = 'X'))
-       or ((ButtonArray[3].Caption = '') and (ButtonArray[9].Caption = 'X') and (ButtonArray[6].Caption = 'X')) then
+  else if (ButtonArray[3].Caption = '') and (ButtonArray[7].Caption = 'X') and
+    (ButtonArray[5].Caption = 'X') or (ButtonArray[3].Caption = '') and
+    (ButtonArray[2].Caption = 'X') and (ButtonArray[1].Caption = 'X') or
+    (ButtonArray[3].Caption = '') and (ButtonArray[9].Caption = 'X') and
+    (ButtonArray[6].Caption = 'X') then
   begin
     PlayHelp(3);
   end
-  else if ((ButtonArray[5].Caption = '') and (ButtonArray[2].Caption = 'X') and (ButtonArray[8].Caption = 'X'))
-       or ((ButtonArray[5].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[9].Caption = 'X'))
-       or ((ButtonArray[5].Caption = '') and (ButtonArray[4].Caption = 'X') and (ButtonArray[6].Caption = 'X')) then
+  else if (ButtonArray[5].Caption = '') and (ButtonArray[2].Caption = 'X') and
+    (ButtonArray[8].Caption = 'X') or (ButtonArray[5].Caption = '') and
+    (ButtonArray[1].Caption = 'X') and (ButtonArray[9].Caption = 'X') or
+    (ButtonArray[5].Caption = '') and (ButtonArray[4].Caption = 'X') and
+    (ButtonArray[6].Caption = 'X') then
   begin
     PlayHelp(5);
   end
-  else if ((ButtonArray[4].Caption = '') and (ButtonArray[5].Caption = 'X') and (ButtonArray[6].Caption = 'X'))
-       or ((ButtonArray[4].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[7].Caption = 'X')) then
+  else if (ButtonArray[4].Caption = '') and (ButtonArray[5].Caption = 'X') and
+    (ButtonArray[6].Caption = 'X') or (ButtonArray[4].Caption = '') and
+    (ButtonArray[1].Caption = 'X') and (ButtonArray[7].Caption = 'X') then
   begin
     PlayHelp(4);
   end
-  else if ((ButtonArray[6].Caption = '') and (ButtonArray[3].Caption = 'X') and (ButtonArray[9].Caption = 'X'))
-       or ((ButtonArray[6].Caption = '') and (ButtonArray[4].Caption = 'X') and (ButtonArray[5].Caption = 'X')) then
+  else if (ButtonArray[6].Caption = '') and (ButtonArray[3].Caption = 'X') and
+    (ButtonArray[9].Caption = 'X') or (ButtonArray[6].Caption = '') and
+    (ButtonArray[4].Caption = 'X') and (ButtonArray[5].Caption = 'X') then
   begin
     PlayHelp(6);
   end
-  else if ((ButtonArray[7].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[4].Caption = 'X'))
-       or ((ButtonArray[7].Caption = '') and (ButtonArray[8].Caption = 'X') and (ButtonArray[9].Caption = 'X'))
-       or ((ButtonArray[7].Caption = '') and (ButtonArray[5].Caption = 'X')and  (ButtonArray[3].Caption = 'X')) then
+  else if (ButtonArray[7].Caption = '') and (ButtonArray[1].Caption = 'X') and
+    (ButtonArray[4].Caption = 'X') or (ButtonArray[7].Caption = '') and
+    (ButtonArray[8].Caption = 'X') and (ButtonArray[9].Caption = 'X') or
+    (ButtonArray[7].Caption = '') and (ButtonArray[5].Caption = 'X') and
+    (ButtonArray[3].Caption = 'X') then
   begin
     PlayHelp(7);
   end ;
@@ -539,5 +521,4 @@ end;
     PcInputNormal();
   end;
  end;
-
 end.

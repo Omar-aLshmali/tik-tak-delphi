@@ -61,7 +61,7 @@ object Form1: TForm1
   end
   object begin_play: TLabel
     Left = 442
-    Top = 145
+    Top = 154
     Width = 15
     Height = 57
     Font.Charset = DEFAULT_CHARSET
@@ -73,7 +73,7 @@ object Form1: TForm1
   end
   object btn1: TButton
     Left = 360
-    Top = 208
+    Top = 217
     Width = 97
     Height = 73
     Font.Charset = DEFAULT_CHARSET
@@ -86,8 +86,8 @@ object Form1: TForm1
     OnClick = btnClick
   end
   object btn2: TButton
-    Left = 472
-    Top = 208
+    Left = 463
+    Top = 217
     Width = 97
     Height = 73
     Font.Charset = DEFAULT_CHARSET
@@ -100,8 +100,8 @@ object Form1: TForm1
     OnClick = btnClick
   end
   object btn3: TButton
-    Left = 584
-    Top = 208
+    Left = 566
+    Top = 217
     Width = 97
     Height = 73
     Font.Charset = DEFAULT_CHARSET
@@ -130,7 +130,7 @@ object Form1: TForm1
     OnClick = btnClick
   end
   object btn5: TButton
-    Left = 472
+    Left = 463
     Top = 296
     Width = 97
     Height = 73
@@ -144,7 +144,7 @@ object Form1: TForm1
     OnClick = btnClick
   end
   object btn6: TButton
-    Left = 584
+    Left = 566
     Top = 296
     Width = 97
     Height = 73
@@ -161,7 +161,7 @@ object Form1: TForm1
   end
   object btn7: TButton
     Left = 360
-    Top = 384
+    Top = 375
     Width = 97
     Height = 73
     Font.Charset = DEFAULT_CHARSET
@@ -174,8 +174,8 @@ object Form1: TForm1
     OnClick = btnClick
   end
   object btn8: TButton
-    Left = 472
-    Top = 384
+    Left = 463
+    Top = 375
     Width = 97
     Height = 73
     Font.Charset = DEFAULT_CHARSET
@@ -188,8 +188,8 @@ object Form1: TForm1
     OnClick = btnClick
   end
   object btn9: TButton
-    Left = 584
-    Top = 384
+    Left = 566
+    Top = 375
     Width = 97
     Height = 73
     Font.Charset = DEFAULT_CHARSET
@@ -203,7 +203,7 @@ object Form1: TForm1
   end
   object New_play: TButton
     Left = 200
-    Top = 280
+    Top = 304
     Width = 115
     Height = 41
     Caption = 'Neues Spiel'
@@ -218,7 +218,7 @@ object Form1: TForm1
   end
   object New_begin: TButton
     Left = 200
-    Top = 343
+    Top = 351
     Width = 115
     Height = 41
     Caption = 'Neu Anfangen'
@@ -233,7 +233,7 @@ object Form1: TForm1
   end
   object End_play: TButton
     Left = 200
-    Top = 408
+    Top = 398
     Width = 115
     Height = 41
     Caption = 'Beenden'
@@ -247,22 +247,24 @@ object Form1: TForm1
     OnClick = End_playClick
   end
   object CheckBox1: TCheckBox
-    Left = 456
-    Top = 496
+    Left = 442
+    Top = 480
     Width = 153
     Height = 49
     Caption = 'Schwer spielen'
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
     TabOrder = 12
   end
   object play: TButton
     Left = 200
-    Top = 207
+    Top = 257
     Width = 115
     Height = 41
     Caption = 'Start'

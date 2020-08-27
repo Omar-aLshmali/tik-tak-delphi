@@ -12,7 +12,7 @@ uses
   Controls,
   Forms,
   Dialogs,
-  StdCtrls, Vcl.ExtCtrls;
+  StdCtrls;
 
 type
   TForm1 = class(TForm)
@@ -34,7 +34,6 @@ type
     begin_play: TLabel;
     CheckBox1: TCheckBox;
     play: TButton;
-    RadioGroup1: TRadioGroup;
 
     procedure End_playClick(Sender: TObject);
     procedure btnClick(Sender: TObject);
@@ -42,12 +41,8 @@ type
     procedure New_playClick(Sender: TObject);
     procedure New_beginClick(Sender: TObject);
     procedure playClick(Sender: TObject);
-    procedure RadioGroup1Click(Sender: TObject);
-
-
   private
     ButtonArray: array [1 .. 9] of TButton;
-
     playerInput, player, player1, player2, draw: Integer;
     function IsWinn(): Boolean;
     procedure NewPlay();
@@ -63,7 +58,6 @@ type
     procedure Tow_o();
     procedure Tow_X();
     procedure ImportantPcHardInput();
-
     { Private-Deklarationen }
   public
 
@@ -117,28 +111,6 @@ begin
 end;
 
 // Random Function ,who starts
-procedure TForm1.RadioGroup1Click(Sender: TObject);
-   var
-    i:integer;
-     RadioButton :  TRadioGroup;
-   const Farbe :array[0..3] of TColor=(Clwhite,Clred,Clgreen,Clyellow);
-begin
-
-       RadioButton:= sender as TRadioGroup;
-
-    for I := RadioGroup1.ItemIndex to 3 do
-
-    begin
-    RadioButton.Color := Farbe[RadioGroup1.ItemIndex];
-      form1.Color:=RadioButton.Color ;
-
-    end  ;
-
-
-
-
-end;
-
 procedure TForm1.RandomBegin();
 var
   randomPlayer: Integer;
@@ -221,9 +193,6 @@ begin
   end;
 
 end;
-
-
-
 
 // got the result and repeat the round
 procedure TForm1.NewPlay();
@@ -539,5 +508,4 @@ end;
     PcInputNormal();
   end;
  end;
-
 end.

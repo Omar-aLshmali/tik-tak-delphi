@@ -61,9 +61,9 @@ object Form1: TForm1
   end
   object begin_play: TLabel
     Left = 442
-    Top = 145
-    Width = 15
-    Height = 57
+    Top = 154
+    Width = 8
+    Height = 29
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
@@ -252,7 +252,7 @@ object Form1: TForm1
     Width = 153
     Height = 49
     Caption = 'Schwer spielen'
-    Color = clHighlight
+    Color = clWindow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -276,5 +276,20 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 13
     OnClick = playClick
+  end
+  object RadioGroup1: TRadioGroup
+    Left = 24
+    Top = 8
+    Width = 145
+    Height = 161
+    Caption = 'Farbe Auswahl'
+    ItemIndex = 0
+    Items.Strings = (
+      'Wei'#223
+      'Gr'#252'n'
+      'Red'
+      'Gelb')
+    TabOrder = 14
+    OnClick = RadioGroup1Click
   end
 end

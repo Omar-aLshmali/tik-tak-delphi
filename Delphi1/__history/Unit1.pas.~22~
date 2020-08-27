@@ -111,12 +111,12 @@ begin
   randomPlayer := Random(2);
   if RandomPlayer = 0 then
   begin
-    begin_play.Caption := 'Du f√§ngst an';
+    begin_play.Caption := 'Du f‰ngst an';
     player := 1;
   end
   else
   begin
-    begin_play.Caption := ' PC f√§ngt an';
+    begin_play.Caption := ' PC f‰ngt an';
     player := 0;
   end;
 
@@ -148,6 +148,7 @@ begin
       Inc(player1);
       NewPlay();
     end
+
 
   end
 
@@ -273,18 +274,23 @@ end;
 procedure TForm1.PcInputHard();
 
 begin
+
+// Positions that increase profit
  if (playerInput=1)and(player=0) and (ButtonArray[5].Caption='')  then
 
    begin
    PlayHelp(5);
    end
 
- else if (ButtonArray[5].Caption='O')and(player=1) and (ButtonArray[9].Caption='X') and (ButtonArray[6].Caption='')then
+ else if (ButtonArray[5].Caption='O')and(player=0) and (ButtonArray[9].Caption='X') and (ButtonArray[6].Caption='')then
  begin
   PlayHelp(6);
  end
-
-
+     else if (ButtonArray[5].Caption='O')and(player=0) and (ButtonArray[7].Caption='X') and (ButtonArray[4].Caption='')then
+ begin
+  PlayHelp(4);
+ end
+        // If there are two O , insert a third
      else if (ButtonArray[1].Caption='') and (ButtonArray[2].Caption='O')and(ButtonArray[3].Caption='O') or(ButtonArray[1].Caption='')and(ButtonArray[5].Caption='O')and(ButtonArray[9].Caption='O') or(ButtonArray[1].Caption='')and(ButtonArray[7].Caption='O')and(ButtonArray[4].Caption='O') then
    begin
        PlayHelp(1);
@@ -318,7 +324,7 @@ begin
        PlayHelp(4);
    end
 
-   //
+   // If there are two X , insert a third
     else if (ButtonArray[2].Caption='') and (ButtonArray[8].Caption='X') and (ButtonArray[5].Caption='X') or(ButtonArray[2].Caption='')and(ButtonArray[1].Caption='X')and(ButtonArray[3].Caption='X') then
    begin
        PlayHelp(2);
@@ -355,7 +361,9 @@ begin
    begin
        PlayHelp(7);
    end
-   //
+
+   //  important input positions
+
     else if (player=0) and (ButtonArray[3].Caption='') then
    begin
        PlayHelp(3);
@@ -364,6 +372,8 @@ begin
    begin
        PlayHelp(7);
    end
+
+   // Random position
    else
    begin
    PcInputNormal();
@@ -437,9 +447,10 @@ begin
   end;
 end;
 
+
 procedure TForm1.PlayHelp(i: Integer);
 begin
- ButtonArray[i].Caption:='O';
+       ButtonArray[i].Caption:='O';
        inc(player);
        inc(playerinput);
 end;
