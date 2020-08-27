@@ -35,10 +35,6 @@ type
     CheckBox1: TCheckBox;
     play: TButton;
     RadioGroup1: TRadioGroup;
-    Timer1: TTimer;
-    TimerButton: TButton;
-    ColorDialog1: TColorDialog;
-    Button1: TButton;
 
     procedure End_playClick(Sender: TObject);
     procedure btnClick(Sender: TObject);
@@ -47,9 +43,6 @@ type
     procedure New_beginClick(Sender: TObject);
     procedure playClick(Sender: TObject);
     procedure RadioGroup1Click(Sender: TObject);
-    procedure Timer1Timer(Sender: TObject);
-    procedure TimerButtonClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
 
 
   private
@@ -116,12 +109,6 @@ end;
 
 // Play end
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-if ColorDialog1.Execute=true then
- form1.Color:=ColorDialog1.Color;
-end;
-
 procedure TForm1.End_playClick(Sender: TObject);
 
 begin
@@ -134,12 +121,12 @@ procedure TForm1.RadioGroup1Click(Sender: TObject);
    var
     i:integer;
      RadioButton :  TRadioGroup;
-   const Farbe :array[0..3] of TColor=(Clwhite,Clgreen,Clred,Clyellow);
+   const Farbe :array[0..3] of TColor=(Clwhite,Clred,Clgreen,Clyellow);
 begin
 
        RadioButton:= sender as TRadioGroup;
 
-    for I := 0 to 3 do
+    for I := RadioGroup1.ItemIndex to 3 do
 
     begin
     RadioButton.Color := Farbe[RadioGroup1.ItemIndex];
@@ -414,75 +401,49 @@ begin
   result := false;
 end;
 // If there are two O , insert a third
- procedure TForm1.Timer1Timer(Sender: TObject);
- var i:integer;
-begin
-      i:= RadioGroup1.ItemIndex;
-      if i<3  then i:=i+1
-      else i:=0;
-      RadioGroup1.ItemIndex:=i;
-
-
-
-end;
-
-procedure TForm1.TimerButtonClick(Sender: TObject);
-begin
-
-
-if Timer1.Enabled=false then
-begin
-Timer1.Enabled:=true;
-end
-else
- if Timer1.Enabled then
- Timer1.Enabled:=false;
-
-end;
-
-procedure TForm1.Tow_o();
+ procedure TForm1.Tow_o();
  begin
 
-       if ((ButtonArray[1].Caption = '') and (ButtonArray[2].Caption = 'O') and (ButtonArray[3].Caption = 'O')and(player=0))
-       or ((ButtonArray[1].Caption = '') and (ButtonArray[5].Caption = 'O') and (ButtonArray[9].Caption = 'O')and(player=0))
-       or ((ButtonArray[1].Caption = '') and (ButtonArray[7].Caption = 'O') and (ButtonArray[4].Caption = 'O')and(player=0)) then
+       if ((ButtonArray[1].Caption = '') and (ButtonArray[2].Caption = 'O') and (ButtonArray[3].Caption = 'O'))
+       or ((ButtonArray[1].Caption = '') and (ButtonArray[5].Caption = 'O') and (ButtonArray[9].Caption = 'O'))
+       or ((ButtonArray[1].Caption = '') and (ButtonArray[7].Caption = 'O') and (ButtonArray[4].Caption = 'O')) then
   begin
     PlayHelp(1);
   end
-  else if ((ButtonArray[6].Caption = '') and (ButtonArray[3].Caption = 'O') and (ButtonArray[9].Caption = 'O')and(player=0))
-       or ((ButtonArray[6].Caption = '') and (ButtonArray[4].Caption = 'O') and (ButtonArray[5].Caption = 'O')and(player=0)) then
+  else if ((ButtonArray[6].Caption = '') and (ButtonArray[3].Caption = 'O') and (ButtonArray[9].Caption = 'O'))
+       or ((ButtonArray[6].Caption = '') and (ButtonArray[4].Caption = 'O') and (ButtonArray[5].Caption = 'O')) then
   begin
     PlayHelp(6);
   end
-  else if ((ButtonArray[2].Caption = '') and (ButtonArray[8].Caption = 'O') and(ButtonArray[5].Caption = 'O')and(player=0))
-       or ((ButtonArray[2].Caption = '') and (ButtonArray[1].Caption = 'O') and(ButtonArray[3].Caption = 'O')and(player=0)) then
+  else if ((ButtonArray[2].Caption = '') and (ButtonArray[8].Caption = 'O') and(ButtonArray[5].Caption = 'O'))
+       or ((ButtonArray[2].Caption = '') and (ButtonArray[1].Caption = 'O') and(ButtonArray[3].Caption = 'O')) then
   begin
     PlayHelp(2);
   end
-  else if ((ButtonArray[3].Caption = '') and (ButtonArray[7].Caption = 'O') and (ButtonArray[5].Caption = 'O')and(player=0))
-       or ((ButtonArray[3].Caption = '') and (ButtonArray[2].Caption = 'O') and (ButtonArray[1].Caption = 'O')and(player=0))
-       or ((ButtonArray[3].Caption = '') and (ButtonArray[9].Caption = 'O') and (ButtonArray[6].Caption = 'O')and(player=0)) then
+  else if ((ButtonArray[3].Caption = '') and (ButtonArray[7].Caption = 'O') and (ButtonArray[5].Caption = 'O'))
+       or ((ButtonArray[3].Caption = '') and (ButtonArray[2].Caption = 'O') and (ButtonArray[1].Caption = 'O'))
+       or ((ButtonArray[3].Caption = '') and (ButtonArray[9].Caption = 'O') and (ButtonArray[6].Caption = 'O')) then
   begin
     PlayHelp(3);
   end
-  else if ((ButtonArray[8].Caption = '') and (ButtonArray[5].Caption = 'O') and (ButtonArray[2].Caption = 'O')and(player=0))
-       or ((ButtonArray[8].Caption = '') and (ButtonArray[7].Caption = 'O') and (ButtonArray[9].Caption = 'O')and(player=0)) then
+  else if ((ButtonArray[8].Caption = '') and (ButtonArray[5].Caption = 'O') and (ButtonArray[2].Caption = 'O'))
+       or ((ButtonArray[8].Caption = '') and (ButtonArray[7].Caption = 'O') and (ButtonArray[9].Caption = 'O')) then
   begin
     PlayHelp(8);
   end
-  else if ((ButtonArray[9].Caption = '') and (ButtonArray[8].Caption = 'O') and (ButtonArray[7].Caption = 'O')and(player=0))
-     or   ((ButtonArray[9].Caption = '') and (ButtonArray[3].Caption = 'O') and (ButtonArray[6].Caption = 'O')and(player=0))
-     or   ((ButtonArray[9].Caption = '') and (ButtonArray[1].Caption = 'O') and (ButtonArray[5].Caption = 'O')and(player=0)) then
+  else if ((ButtonArray[9].Caption = '') and (ButtonArray[8].Caption = 'O') and (ButtonArray[7].Caption = 'O'))
+     or   ((ButtonArray[9].Caption = '') and (ButtonArray[3].Caption = 'O') and (ButtonArray[6].Caption = 'O'))
+     or   ((ButtonArray[9].Caption = '') and (ButtonArray[1].Caption = 'O') and (ButtonArray[5].Caption = 'O')) then
   begin
     PlayHelp(9);
   end
-  else if ((ButtonArray[5].Caption = '') and (ButtonArray[2].Caption = 'O') and (ButtonArray[8].Caption = 'O')and(player=0))
-       or ((ButtonArray[5].Caption = '') and (ButtonArray[1].Caption = 'O') and (ButtonArray[9].Caption = 'O')and(player=0)) then
+  else if ((ButtonArray[5].Caption = '') and (ButtonArray[2].Caption = 'O') and (ButtonArray[8].Caption = 'O'))
+       or ((ButtonArray[5].Caption = '') and (ButtonArray[1].Caption = 'O') and (ButtonArray[9].Caption = 'O')) then
   begin
     PlayHelp(5);
   end
-  else if ((ButtonArray[4].Caption = '') and (ButtonArray[1].Caption = 'O') and (ButtonArray[7].Caption = 'O')and(player=0))
-       or ((ButtonArray[4].Caption = '') and (ButtonArray[5].Caption = 'O') and (ButtonArray[6].Caption = 'O')and(player=0)) then
+  else if ((ButtonArray[4].Caption = '') and (ButtonArray[1].Caption = 'O') and (ButtonArray[7].Caption = 'O'))
+       or ((ButtonArray[4].Caption = '') and (ButtonArray[5].Caption = 'O') and (ButtonArray[6].Caption = 'O')) then
   begin
     PlayHelp(4);
   end;
@@ -491,53 +452,53 @@ procedure TForm1.Tow_o();
  procedure TForm1.Tow_X();
  begin
 
-       if ((ButtonArray[2].Caption = '') and (ButtonArray[8].Caption = 'X') and (ButtonArray[5].Caption = 'X')and(player=0))
-       or ((ButtonArray[2].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[3].Caption = 'X')and(player=0)) then
+       if ((ButtonArray[2].Caption = '') and (ButtonArray[8].Caption = 'X') and (ButtonArray[5].Caption = 'X'))
+       or ((ButtonArray[2].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[3].Caption = 'X')) then
   begin
     PlayHelp(2);
   end
-  else if ((ButtonArray[8].Caption = '') and (ButtonArray[5].Caption = 'X') and (ButtonArray[2].Caption = 'X')and(player=0))
-       or ((ButtonArray[8].Caption = '') and (ButtonArray[7].Caption = 'X') and (ButtonArray[9].Caption = 'X')and(player=0)) then
+  else if ((ButtonArray[8].Caption = '') and (ButtonArray[5].Caption = 'X') and (ButtonArray[2].Caption = 'X'))
+       or ((ButtonArray[8].Caption = '') and (ButtonArray[7].Caption = 'X') and (ButtonArray[9].Caption = 'X')) then
   begin
     PlayHelp(8);
   end
-  else if ((ButtonArray[9].Caption = '') and (ButtonArray[8].Caption = 'X') and (ButtonArray[7].Caption = 'X')and(player=0))
-       or ((ButtonArray[9].Caption = '') and (ButtonArray[3].Caption = 'X') and (ButtonArray[6].Caption = 'X')and(player=0))
-       or ((ButtonArray[9].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[5].Caption = 'X')and(player=0)) then
+  else if ((ButtonArray[9].Caption = '') and (ButtonArray[8].Caption = 'X') and (ButtonArray[7].Caption = 'X'))
+       or ((ButtonArray[9].Caption = '') and (ButtonArray[3].Caption = 'X') and (ButtonArray[6].Caption = 'X'))
+       or ((ButtonArray[9].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[5].Caption = 'X')) then
   begin
     PlayHelp(9);
   end
-  else if ((ButtonArray[1].Caption = '') and (ButtonArray[2].Caption = 'X') and (ButtonArray[3].Caption = 'X')and(player=0))
-       or ((ButtonArray[1].Caption = '') and (ButtonArray[5].Caption = 'X') and (ButtonArray[9].Caption = 'X')and(player=0))
-       or ((ButtonArray[1].Caption = '') and (ButtonArray[7].Caption = 'X') and (ButtonArray[4].Caption = 'X')and(player=0)) then
+  else if ((ButtonArray[1].Caption = '') and (ButtonArray[2].Caption = 'X') and (ButtonArray[3].Caption = 'X'))
+       or ((ButtonArray[1].Caption = '') and (ButtonArray[5].Caption = 'X') and (ButtonArray[9].Caption = 'X'))
+       or ((ButtonArray[1].Caption = '') and (ButtonArray[7].Caption = 'X') and (ButtonArray[4].Caption = 'X')) then
   begin
     PlayHelp(1);
   end
-  else if ((ButtonArray[3].Caption = '') and (ButtonArray[7].Caption = 'X') and (ButtonArray[5].Caption = 'X')and(player=0))
-       or ((ButtonArray[3].Caption = '') and (ButtonArray[2].Caption = 'X') and (ButtonArray[1].Caption = 'X')and(player=0))
-       or ((ButtonArray[3].Caption = '') and (ButtonArray[9].Caption = 'X') and (ButtonArray[6].Caption = 'X')and(player=0)) then
+  else if ((ButtonArray[3].Caption = '') and (ButtonArray[7].Caption = 'X') and (ButtonArray[5].Caption = 'X'))
+       or ((ButtonArray[3].Caption = '') and (ButtonArray[2].Caption = 'X') and (ButtonArray[1].Caption = 'X'))
+       or ((ButtonArray[3].Caption = '') and (ButtonArray[9].Caption = 'X') and (ButtonArray[6].Caption = 'X')) then
   begin
     PlayHelp(3);
   end
-  else if ((ButtonArray[5].Caption = '') and (ButtonArray[2].Caption = 'X') and (ButtonArray[8].Caption = 'X')and(player=0))
-       or ((ButtonArray[5].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[9].Caption = 'X')and(player=0))
-       or ((ButtonArray[5].Caption = '') and (ButtonArray[4].Caption = 'X') and (ButtonArray[6].Caption = 'X')and(player=0)) then
+  else if ((ButtonArray[5].Caption = '') and (ButtonArray[2].Caption = 'X') and (ButtonArray[8].Caption = 'X'))
+       or ((ButtonArray[5].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[9].Caption = 'X'))
+       or ((ButtonArray[5].Caption = '') and (ButtonArray[4].Caption = 'X') and (ButtonArray[6].Caption = 'X')) then
   begin
     PlayHelp(5);
   end
-  else if ((ButtonArray[4].Caption = '') and (ButtonArray[5].Caption = 'X') and (ButtonArray[6].Caption = 'X')and(player=0))
-       or ((ButtonArray[4].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[7].Caption = 'X')and(player=0)) then
+  else if ((ButtonArray[4].Caption = '') and (ButtonArray[5].Caption = 'X') and (ButtonArray[6].Caption = 'X'))
+       or ((ButtonArray[4].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[7].Caption = 'X')) then
   begin
     PlayHelp(4);
   end
-  else if ((ButtonArray[6].Caption = '') and (ButtonArray[3].Caption = 'X') and (ButtonArray[9].Caption = 'X')and(player=0))
-       or ((ButtonArray[6].Caption = '') and (ButtonArray[4].Caption = 'X') and (ButtonArray[5].Caption = 'X')and(player=0)) then
+  else if ((ButtonArray[6].Caption = '') and (ButtonArray[3].Caption = 'X') and (ButtonArray[9].Caption = 'X'))
+       or ((ButtonArray[6].Caption = '') and (ButtonArray[4].Caption = 'X') and (ButtonArray[5].Caption = 'X')) then
   begin
     PlayHelp(6);
   end
-  else if ((ButtonArray[7].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[4].Caption = 'X')and(player=0))
-       or ((ButtonArray[7].Caption = '') and (ButtonArray[8].Caption = 'X') and (ButtonArray[9].Caption = 'X')and(player=0))
-       or ((ButtonArray[7].Caption = '') and (ButtonArray[5].Caption = 'X')and  (ButtonArray[3].Caption = 'X')and(player=0)) then
+  else if ((ButtonArray[7].Caption = '') and (ButtonArray[1].Caption = 'X') and (ButtonArray[4].Caption = 'X'))
+       or ((ButtonArray[7].Caption = '') and (ButtonArray[8].Caption = 'X') and (ButtonArray[9].Caption = 'X'))
+       or ((ButtonArray[7].Caption = '') and (ButtonArray[5].Caption = 'X')and  (ButtonArray[3].Caption = 'X')) then
   begin
     PlayHelp(7);
   end ;

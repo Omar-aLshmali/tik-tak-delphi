@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 214
   Top = 220
   Caption = 'Tik Tak Toe'
-  ClientHeight = 756
+  ClientHeight = 796
   ClientWidth = 1337
   Color = clWhite
   Font.Charset = ANSI_CHARSET
@@ -278,7 +278,7 @@ object Form1: TForm1
     OnClick = playClick
   end
   object RadioGroup1: TRadioGroup
-    Left = 8
+    Left = -2
     Top = 8
     Width = 145
     Height = 161
@@ -287,38 +287,48 @@ object Form1: TForm1
     Items.Strings = (
       'Wei'#223
       'Gr'#252'n'
-      'Red'
+      'Rot'
       'Gelb')
     TabOrder = 14
     OnClick = RadioGroup1Click
   end
-  object TimerButton: TButton
-    Left = 200
-    Top = 16
-    Width = 97
-    Height = 33
-    Caption = 'Timer Aktivieren'
-    TabOrder = 15
-    OnClick = TimerButtonClick
-  end
   object Button1: TButton
-    Left = 200
-    Top = 55
-    Width = 97
-    Height = 34
+    Left = 149
+    Top = 16
+    Width = 115
+    Height = 58
     Caption = 'Farbe Ausw'#228'hlen'
-    TabOrder = 16
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 15
     OnClick = Button1Click
+  end
+  object BitBtn1: TBitBtn
+    Left = 149
+    Top = 80
+    Width = 115
+    Height = 49
+    Caption = 'Farbe Timer'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 16
+    OnClick = BitBtn1Click
   end
   object Timer1: TTimer
     Enabled = False
     Interval = 3000
     OnTimer = Timer1Timer
-    Left = 320
-    Top = 16
+    Top = 200
   end
   object ColorDialog1: TColorDialog
-    Left = 880
-    Top = 472
+    Top = 168
   end
 end

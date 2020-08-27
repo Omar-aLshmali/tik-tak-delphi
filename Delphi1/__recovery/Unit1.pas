@@ -12,7 +12,7 @@ uses
   Controls,
   Forms,
   Dialogs,
-  StdCtrls, Vcl.ExtCtrls;
+  StdCtrls, Vcl.ExtCtrls, Vcl.Menus, Vcl.Buttons, Vcl.ToolWin, Vcl.ComCtrls;
 
 type
   TForm1 = class(TForm)
@@ -36,9 +36,9 @@ type
     play: TButton;
     RadioGroup1: TRadioGroup;
     Timer1: TTimer;
-    TimerButton: TButton;
     ColorDialog1: TColorDialog;
     Button1: TButton;
+    BitBtn1: TBitBtn;
 
     procedure End_playClick(Sender: TObject);
     procedure btnClick(Sender: TObject);
@@ -48,8 +48,8 @@ type
     procedure playClick(Sender: TObject);
     procedure RadioGroup1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
-    procedure TimerButtonClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
 
 
   private
@@ -93,7 +93,6 @@ begin
 end;
 
 // Reset everything to zero and start a new game
-
 procedure TForm1.New_beginClick(Sender: TObject);
 var
   i: Integer;
@@ -113,9 +112,7 @@ begin
   RandomBegin();
   PcInput(Sender);
 end;
-
 // Play end
-
 procedure TForm1.Button1Click(Sender: TObject);
 begin
 if ColorDialog1.Execute=true then
@@ -126,9 +123,7 @@ procedure TForm1.End_playClick(Sender: TObject);
 
 begin
   Close();
-
 end;
-
 // Random Function ,who starts
 procedure TForm1.RadioGroup1Click(Sender: TObject);
    var
@@ -136,20 +131,13 @@ procedure TForm1.RadioGroup1Click(Sender: TObject);
      RadioButton :  TRadioGroup;
    const Farbe :array[0..3] of TColor=(Clwhite,Clgreen,Clred,Clyellow);
 begin
-
        RadioButton:= sender as TRadioGroup;
-
     for I := 0 to 3 do
-
     begin
     RadioButton.Color := Farbe[RadioGroup1.ItemIndex];
       form1.Color:=RadioButton.Color ;
 
     end  ;
-
-
-
-
 end;
 
 procedure TForm1.RandomBegin();
@@ -159,15 +147,30 @@ begin
   randomPlayer := Random(2);
   if randomPlayer = 0 then
   begin
-    begin_play.Caption := 'Du f‰ngst an';
+    begin_play.Caption := 'Du f√§ngst an';
     player := 1;
   end
   else
   begin
-    begin_play.Caption := ' PC f‰ngt an';
+    begin_play.Caption := ' PC f√§ngt an';
     player := 0;
   end;
 
+end;
+
+procedure TForm1.BitBtn1Click(Sender: TObject);
+begin
+BitBtn1.Caption:='Deaktiviert';
+
+if Timer1.Enabled=false then
+begin
+Timer1.Enabled:=true;
+BitBtn1.Caption:='Aktiviert';
+
+end
+else
+ if Timer1.Enabled=True then
+ Timer1.Enabled:=false;
 end;
 
 procedure TForm1.btnClick(Sender: TObject);
@@ -426,20 +429,6 @@ begin
 
 end;
 
-procedure TForm1.TimerButtonClick(Sender: TObject);
-begin
-
-
-if Timer1.Enabled=false then
-begin
-Timer1.Enabled:=true;
-end
-else
- if Timer1.Enabled then
- Timer1.Enabled:=false;
-
-end;
-
 procedure TForm1.Tow_o();
  begin
 
@@ -487,6 +476,7 @@ procedure TForm1.Tow_o();
     PlayHelp(4);
   end;
  end;
+
  // If there are two X , insert a third
  procedure TForm1.Tow_X();
  begin
@@ -542,6 +532,7 @@ procedure TForm1.Tow_o();
     PlayHelp(7);
   end ;
  end;
+
  // important input positions
 
  procedure TForm1.ImportantPcHardInput();
@@ -578,5 +569,4 @@ procedure TForm1.Tow_o();
     PcInputNormal();
   end;
  end;
-
 end.
